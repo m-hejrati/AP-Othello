@@ -35,7 +35,8 @@ public class Map {
             reverseAround(player.getColorCode(), row, column);
             return true;
         } else {
-            System.out.println("Impossible, Please choose another block");
+            if (!player.getName().equals("Computer"))
+                System.out.println("Impossible, Please choose another block");
             return false;
         }
     }
