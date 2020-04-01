@@ -1,3 +1,9 @@
+/**
+ * this class run the game
+ *
+ * @author Mahdi Hejrati 9723100
+ * @since 2020.03.31
+ */
 import java.util.Scanner;
 
 public class Main {
@@ -9,15 +15,19 @@ public class Main {
         System.out.println("By Mahdi Hejrati 9723100\n");
         System.out.println("1. Single player");
         System.out.println("2. Double player");
+
         int kind = input.nextInt();
 
         if (kind == 2) {
             System.out.println("Enter first player name (black color):");
             Player p1 = new Player(input.next(), 1);
+
             System.out.println("Enter second player name (white color):");
             Player p2 = new Player(input.next(), 2);
+
             System.out.println("Game starts");
             System.out.println("Please Choose your block in \"I C form\" (I: an integer for row, C: a char in capital for column)");
+
             myMap.print(p1, p2);
 
             while (true) {
@@ -46,16 +56,20 @@ public class Main {
             // get an integer and character
             while (!myMap.play(firstPlayer, input.nextInt() - 1, (int) input.next().charAt(0) - 64 - 1)) ;
             myMap.print(firstPlayer, secondPlayer);
+
          // finish the game if none of the player cant put disk.
         }else if (!myMap.hasValid(secondPlayer)) {
             System.out.println("Finish");
             myMap.print(firstPlayer, secondPlayer);
+
+            // print the winner of the game
             if (myMap.countColor(firstPlayer) > myMap.countColor(secondPlayer))
                 System.out.println("*" + firstPlayer.getName() + " win*");
             else if (myMap.countColor(firstPlayer) < myMap.countColor(secondPlayer))
                 System.out.println("*" + secondPlayer.getName() + " win*");
             else
                 System.out.println("Draw");
+
         } else
             System.out.println("You cant place disk. Pass");
     }
