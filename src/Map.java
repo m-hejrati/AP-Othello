@@ -30,13 +30,18 @@ public class Map {
         // update valid blocks
         validBlock(player);
         // if he entered correct, set his color to block and reverse all disk between them.
-        if (player.getValidBlocks()[row][column] == 1) {
-            map[row][column] = player.getColorCode();
-            reverseAround(player.getColorCode(), row, column);
-            return true;
+        if (isInMap(row, column)) {
+            if (player.getValidBlocks()[row][column] == 1) {
+                map[row][column] = player.getColorCode();
+                reverseAround(player.getColorCode(), row, column);
+                return true;
+            } else {
+                if (!player.getName().equals("Computer"))
+                    System.out.println("Impossible, Please choose another block");
+                return false;
+            }
         } else {
-            if (!player.getName().equals("Computer"))
-                System.out.println("Impossible, Please choose another block");
+            System.out.println("Please enter in the correct form");
             return false;
         }
     }
